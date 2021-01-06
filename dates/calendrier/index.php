@@ -27,7 +27,6 @@ $nbrDaysInCurrentMonth = round(($endDate - $startDate) / 3600 / 24);
 // Récupération du jour de la semaine qui commence le mois
 $dayStart = strftime("%u", $startDate);
 $dayEnd = 8 - strftime("%u", $endDate);
-var_dump($dayStart , $dayEnd);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -67,7 +66,7 @@ var_dump($dayStart , $dayEnd);
         </fieldset>
     </form>
 
-    <table class="">
+    <table class="table">
         <thead>
             <tr>
                 <th>l</th>
@@ -85,7 +84,7 @@ var_dump($dayStart , $dayEnd);
                 for ($i = 1; $i < ($nbrDaysInCurrentMonth + $dayStart); $i++) {
                     if ($i < $dayStart) {
                 ?>
-                        <td class="bg-secondary text-white"><?= ($nbrDaysInPreviousMonth- $dayStart) + $i +1  ?></td>
+                        <td class="bg-light text-secondary"><?= ($nbrDaysInPreviousMonth- $dayStart) + $i +1  ?></td>
                     <?php } else {
                     ?>
                         <td><?= ($i - $dayStart) + 1 ?></td>
@@ -100,7 +99,7 @@ var_dump($dayStart , $dayEnd);
                 if ($dayEnd < 7) {
                     for ($i = 1; $i < $dayEnd +1; $i++) {
             ?>
-                <td class="bg-secondary text-white"><?= $i ?></td>
+                <td class="bg-light text-secondary"><?= $i ?></td>
 
         <?php
                     }
