@@ -1,6 +1,9 @@
-<?php setlocale(LC_ALL, "fr");?>
+<?php
+locale::defu
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -10,11 +13,18 @@
 
 <body>
     <?php
-    date_default_timezone_set('UTC');
-    strftime("%a");
-    echo date("d/m/Y ");
-    echo date("d-m-Y");
-    echo date(" l d F Y");
+    // date_default_timezone_set('Europe/Paris');
+    // setlocale(LC_TIME, 'fra_fra');
+    // echo utf8_encode(strftime('%A %d %B %Y'));
+    // echo date("d/m/Y");
+    // echo date("d-m-Y");
+    // echo date(" l d F Y");
+
+
+    setlocale(LC_TIME , "fr_FR.UTF-8");
+    // strftime : Format local date and time according to locale settings
+    $dateThree = strftime("%A %d %B %Y");
+    echo "<b>Nous sommes le $dateThree.</b><br><br>";
 
     ?>
 </body>

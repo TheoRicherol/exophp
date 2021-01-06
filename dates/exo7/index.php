@@ -9,14 +9,13 @@
 
 <body>
     <?php
-    $fstFev = mktime(0,0,0,2,1,2016);
-    $lstFev = mktime(0,0,0,3,1,2016);
 
-    $fevDay = $lstFev - $fstFev;
-
-    echo $fevDay/3600/24;
+echo date('d-m-Y', strtotime('+20days'));
+?>
+<?php
+echo date('d-m-Y', strtotime('-22days'));
 
     ?>
 </body>
 
-</html> 
+</html>

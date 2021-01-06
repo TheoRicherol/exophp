@@ -11,10 +11,9 @@
     <?php
     $date = mktime(15,0,0,7,2,2016);
     date_default_timezone_set('UTC');
-    // echo time();
     echo (time() - $date) / 3600 / 24;
 
     ?>
 </body>
 
-</html>
+</html>≤
