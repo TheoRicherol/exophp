@@ -16,8 +16,17 @@ $months = [
 $start = 2000;
 $end = 2100;
 
-$monthSelected = $_POST['months'];
-$yearSelected = $_POST['years'];
+if (empty($_POST)) {
+    $monthSelected = 0;
+    $yearSelected = 2000;
+}
+
+if (!empty($_POST)) {
+    $monthSelected = $_POST['months'];
+    $yearSelected = $_POST['years'];
+ }
+
+
 // Récupération 1er jour du mois et dernier jour du mois en vu du calcul du nombre total de jours dans ce mois
 $prevMonth = mktime(0, 0, 0, $monthSelected, 1, $yearSelected);
 $startDate = mktime(0, 0, 0, $monthSelected + 1, 1, $yearSelected);
@@ -46,7 +55,7 @@ $dayEnd = 8 - strftime("%u", $endDate);
                 <?php
                 foreach ($months as $key => $month) {
                 ?>
-                    <option value="<?= $key ?>" <?= $_POST['months'] == $key ? "selected" : "" ?>><?= $month ?></option>
+                    <option value="<?= $key ?>" <?= isset($_POST['months']) ? ($_POST["months"] == $key ? "selected" : "" ): ""?>><?= $month ?></option>
                 <?php
                 };
                 ?>
@@ -55,14 +64,14 @@ $dayEnd = 8 - strftime("%u", $endDate);
                 <?php
                 for ($i = $start; $i <= $end; $i++) {
                 ?>
-                    <option value="<?= $i ?>" <?= $_POST['years'] == $i ? "selected" : "" ?>><?= $i ?></option>
+                    <option value="<?= $i ?>" <?= isset($_POST["years"]) ? ($_POST["years"]== $i ? "selected" : "") :""?>><?= $i ?></option>
                 <?php
                 };
                 ?>
             </select>
         </fieldset>
         <fieldset>
-            <input type="submit" value="Go">
+            <input class="" type="submit" value="Go">
         </fieldset>
     </form>
 
@@ -84,7 +93,7 @@ $dayEnd = 8 - strftime("%u", $endDate);
                 for ($i = 1; $i < ($nbrDaysInCurrentMonth + $dayStart); $i++) {
                     if ($i < $dayStart) {
                 ?>
-                        <td class="bg-light text-secondary"><?= ($nbrDaysInPreviousMonth- $dayStart) + $i +1  ?></td>
+                        <td class="table-light"><?= ($nbrDaysInPreviousMonth- $dayStart) + $i +1  ?></td>
                     <?php } else {
                     ?>
                         <td><?= ($i - $dayStart) + 1 ?></td>
@@ -99,7 +108,7 @@ $dayEnd = 8 - strftime("%u", $endDate);
                 if ($dayEnd < 7) {
                     for ($i = 1; $i < $dayEnd +1; $i++) {
             ?>
-                <td class="bg-light text-secondary"><?= $i ?></td>
+                <td class="table-light"><?= $i ?></td>
 
         <?php
                     }
